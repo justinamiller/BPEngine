@@ -1,16 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BEEngine.Model\BPEngine.Model.csproj" />
     <ProjectReference Include="..\BPEngine.Tokenizer\BPEngine.Tokenizer.csproj" />
-    <ProjectReference Include="..\BPEngine.Trainer\BPEngine.Trainer.csproj" />
   </ItemGroup>
 
 </Project>

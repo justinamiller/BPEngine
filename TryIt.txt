@@ -1,0 +1,16 @@
+Train an n-gram:
+dotnet run --project ./src/BPEngine.Cli -- ngram train \
+  --order 3 \
+  --corpus ./data/corpus.txt \
+  --merges ./data/demo/gpt2_merges.txt \
+  --vocab  ./data/demo/vocab.json \
+  --out    ./artifacts/ngram.json
+
+Generate text:
+dotnet run --project ./src/BPEngine.Cli -- ngram generate \
+  --order 3 \
+  --model  ./artifacts/ngram.json \
+  --merges ./data/demo/gpt2_merges.txt \
+  --vocab  ./data/demo/vocab.json \
+  --prompt "Hello" \
+  --max 50 --temp 1.0 --topk 0

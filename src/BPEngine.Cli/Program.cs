@@ -22,6 +22,7 @@ namespace BPEngine.Cli
                     "decode" => Commands.DecodeCommand.Run(rest),
                     "train" => Commands.TrainCommand.Run(rest),
                     "validate" => Commands.ValidateCommand.Run(rest),
+                    "ngram" => Commands.NGramCommand.Run(rest),
                     _ => Unknown(cmd)
                 };
             }
