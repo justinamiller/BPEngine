@@ -1,5 +1,6 @@
 ﻿namespace BPEngine.Tokenizer.Core
 {
+    using global::BPEngine.Tokenizer.Caching;
     using global::BPEngine.Tokenizer.Performance;
     using System;
     using System.Collections.Generic;
@@ -28,7 +29,10 @@
         private readonly Dictionary<int, string> _idToToken;   // reverse map for decode
         private readonly SpecialTokenRegistry _specials;
 
-        private readonly TokenCache _cache = new();
+        // NEW: LRU caches
+        private readonly LruTokenCache _mergeCache = new(capacity: 50_000);
+        private readonly LruTokenCache _decodeCache = new(capacity: 50_000);
+
         private readonly TokenizerDiagnostics _diag = new();
 
         private readonly TokenizerOptions _opts;
@@ -71,25 +75,22 @@
 
             foreach (var tok in RegexPreTokenizer.Split(text))
             {
-                // Exact special token passthrough
                 if (_specials.TryGetId(tok, out var sid))
                 {
                     ids.Add(sid);
                     continue;
                 }
 
-                // UTF-8 bytes -> byte-level-unicode chars
+                // bytes -> byte-unicode
                 var bytes = Encoding.UTF8.GetBytes(tok);
                 var mappedChars = new char[bytes.Length];
                 for (int i = 0; i < bytes.Length; i++)
                     mappedChars[i] = _map.ByteToChar[bytes[i]];
-
                 var mapped = new string(mappedChars);
 
-                // Apply BPE merges
-                var pieces = MergeApplier.Apply(mapped, _ranks, _cache, _diag);
+                // Apply BPE with LRU cache
+                var pieces = MergeApplier.Apply(mapped, _ranks, _mergeCache, _diag);
 
-                // Resolve piece -> id
                 foreach (var piece in pieces)
                     ids.Add(GetOrAssignId(piece));
             }
@@ -100,7 +101,6 @@
             return ids.ToArray();
         }
 
-        // ----------------------- Decode -----------------------
         public string Decode(IEnumerable<int> tokenIds)
         {
             if (tokenIds is null) throw new ArgumentNullException(nameof(tokenIds));
@@ -109,7 +109,6 @@
 
             foreach (var id in tokenIds)
             {
-                // If it's a special, write it literally
                 if (_specials.TryGetToken(id, out var sTok))
                 {
                     sb.Append(sTok);
@@ -123,13 +122,22 @@
                     continue;
                 }
 
-                // piece is in byte-level-unicode space; map back to UTF-8
+                // NEW: piece (byte-unicode) -> decoded UTF-8 string via LRU
+                if (_decodeCache.TryGet(piece, out var decoded))
+                {
+                    sb.Append(decoded);
+                    continue;
+                }
+
+                // fallback: decode and cache
                 var len = piece.Length;
                 var tmp = new byte[len];
                 for (int i = 0; i < len; i++)
                     tmp[i] = _map.CharToByte[piece[i]];
+                decoded = Encoding.UTF8.GetString(tmp);
 
-                sb.Append(Encoding.UTF8.GetString(tmp));
+                _decodeCache.Set(piece, decoded);
+                sb.Append(decoded);
             }
 
             return sb.ToString();
