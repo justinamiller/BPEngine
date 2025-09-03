@@ -206,5 +206,60 @@ namespace BPEngine.Cli
         private static void WriteLine(string s) => Console.WriteLine(s);
         private static int SafeWidth() { try { return Math.Max(40, Console.WindowWidth); } catch { return 100; } }
         private static string Truncate(string s, int max) => s.Length <= max ? s : (max <= 1 ? s[..max] : s[..(max - 1)] + "…");
+
+        public static void ShowPerf(Perf.PerfResult r, bool json = false)
+        {
+            if (json)
+            {
+                PrintJson(new
+                {
+                    r.Command,
+                    r.Mode,
+                    start_utc = r.StartTimeUtc.ToString("o"),
+                    elapsed_ms = r.ElapsedMs,
+                    cpu_ms = r.CpuMs,
+                    tokens = r.Tokens,
+                    iterations = r.Iterations,
+                    tokens_per_sec = r.TokensPerSec,
+                    peak_working_set_mb = r.PeakWorkingSetMB,
+                    allocated_bytes = r.AllocatedBytes,
+                    gc = new { gen0 = r.GC0, gen1 = r.GC1, gen2 = r.GC2 },
+                    env = new
+                    {
+                        r.Env.OSDescription,
+                        r.Env.OSArchitecture,
+                        r.Env.ProcessArchitecture,
+                        r.Env.FrameworkDescription,
+                        logical_cores = r.Env.ProcessorCount
+                    },
+                    extra = r.Extra
+                });
+                return;
+            }
+
+            Header("Performance");
+            KeyValues(new[]
+            {
+        ("Command", $"{r.Command} ({r.Mode})"),
+        ("Start (UTC)", r.StartTimeUtc.ToString("o")),
+        ("Wall (ms)", r.ElapsedMs.ToString("0.0")),
+        ("CPU (ms)", r.CpuMs.ToString("0.0")),
+        ("Tokens", r.Tokens.ToString()),
+        ("Throughput", $"{r.TokensPerSec:0.0} tok/s"),
+        ("Peak WS", $"{r.PeakWorkingSetMB:0.0} MB"),
+        ("Allocated", $"{r.AllocatedBytes:n0} B"),
+        ("GC", $"G0:{r.GC0} G1:{r.GC1} G2:{r.GC2}"),
+        ("Runtime", r.Env.FrameworkDescription),
+        ("OS/Arch", $"{r.Env.OSDescription} / {r.Env.ProcessArchitecture}"),
+        ("Cores", r.Env.ProcessorCount.ToString())
+    });
+            if (r.Extra.Count > 0)
+            {
+                Divider();
+                Label("Extra");
+                foreach (var kv in r.Extra) Console.WriteLine($"{kv.Key.PadRight(18)}{kv.Value}");
+            }
+        }
+
     }
 }

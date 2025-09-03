@@ -21,5 +21,15 @@ namespace BPEngine.Tokenizer
             var specialMap = specials?.ToDictionary(x => x.token, x => x.id) ?? new();
             return new ByteLevelBPETokenizer(mergesPath, vocab, specialMap);
         }
+
+        public static ITokenizer CreateInstrumentedFromFiles(
+      string mergesPath, string? vocabPath,
+      IEnumerable<(string token, int id)> specials,
+      Metrics.ITokenizerMetrics? metrics = null)
+        {
+            var vocab = string.IsNullOrWhiteSpace(vocabPath) ? null : VocabJsonReader.Load(vocabPath);
+            var baseTok = new ByteLevelBPETokenizer(mergesPath, vocab, specials?.ToDictionary(x => x.token, x => x.id));
+            return new Metrics.InstrumentedTokenizer(baseTok, metrics);
+        }
     }
 }
