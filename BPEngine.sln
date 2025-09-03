@@ -30,6 +30,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Model", "src\BEEng
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Transformers", "src\BPEngine.Transformers\BPEngine.Transformers.csproj", "{02CE455B-BF68-4FFC-8927-3F1D8D34E946}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{44FD0095-1E35-4144-AE26-425019522E68}"
+	ProjectSection(SolutionItems) = preProject
+		HowTo.md = HowTo.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
