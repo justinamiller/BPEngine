@@ -5,5 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ImportGroup>
+    <InternalsVisibleTo Include="BPEngine.UnitTest" />
+    <InternalsVisibleTo Include="BPEngine.Cli" />
 
+  </ImportGroup>
 </Project>
