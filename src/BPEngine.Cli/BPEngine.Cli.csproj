@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BPEngine.Tokenizer\BPEngine.Tokenizer.csproj" />
+    <ProjectReference Include="..\BPEngine.Trainer\BPEngine.Trainer.csproj" />
   </ItemGroup>
 
 </Project>
