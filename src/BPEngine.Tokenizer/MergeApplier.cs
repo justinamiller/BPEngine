@@ -15,15 +15,21 @@ namespace BPEngine.Tokenizer
             string token,
             IReadOnlyDictionary<(string, string), int> ranks,
             LruTokenCache? cache = null,
-            TokenizerDiagnostics? diag = null)
+            TokenizerDiagnostics diag = null)
         {
+
+            if(diag is null)
+            {
+                diag = new TokenizerDiagnostics();
+            }
+
             // Cache fast-path
             if (cache is not null && cache.TryGet(token, out var cached))
             {
-                diag?.MergeCacheHits++;
+                diag.MergeCacheHits++;
                 return cached.Split(' ');
             }
-            diag?.MergeCacheMisses++;
+            diag.MergeCacheMisses++;
 
             // Split token into "characters"
             var word = new List<string>(capacity: Math.Max(4, token.Length));

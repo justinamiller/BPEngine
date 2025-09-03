@@ -135,22 +135,22 @@ namespace BPEngine.Cli
         public static void Error(string msg) => WithColor(ConsoleColor.Red, () => Console.Error.WriteLine(msg));
 
         // ---------- Internals (pretty mode) ----------
-        private static void Header(string title)
+        internal static void Header(string title)
         {
             WithColor(ConsoleColor.Cyan, () => WriteLine(title.ToUpperInvariant()));
             Divider();
         }
 
-        private static void Divider(char ch = '─')
+        internal static void Divider(char ch = '─')
         {
             var w = SafeWidth();
             WithColor(ConsoleColor.DarkGray, () => WriteLine(new string(ch, Math.Max(20, w))));
         }
 
-        private static void Label(string text)
+        internal static void Label(string text)
             => WithColor(ConsoleColor.DarkCyan, () => WriteLine(text));
 
-        private static void KeyValues(IEnumerable<(string Key, string Value)> pairs, int pad = 12)
+        internal static void KeyValues(IEnumerable<(string Key, string Value)> pairs, int pad = 12)
         {
             foreach (var (k, v) in pairs)
             {

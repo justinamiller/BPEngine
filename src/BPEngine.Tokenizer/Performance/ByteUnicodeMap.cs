@@ -10,7 +10,7 @@ namespace BPEngine.Tokenizer.Performance
     /// Array-backed mapping for byte<->unicode used by byte-level BPE.
     /// Faster than Dictionary lookups in tight loops.
     /// </summary>
-    public sealed class ByteUnicodeMap
+    internal sealed class ByteUnicodeMap
     {
         public char[] ByteToChar { get; }
         public byte[] CharToByte; // sparse; only indices for mapped codepoints are filled

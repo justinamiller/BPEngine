@@ -132,9 +132,9 @@ namespace BPEngine.Cli.Commands
             ConsoleFormats.Divider();
 
             ConsoleFormats.Label("Histogram (per line token counts)");
-            foreach (var b in hist)
+            foreach (var per in hist)
             {
-                Console.WriteLine($"{b.Label.PadRight(12)} {new string('█', (int)Math.Round(b.Fraction * 40))} {b.Count}");
+                Console.WriteLine($"{per.Label.PadRight(12)} {new string('█', (int)Math.Round(per.Fraction * 40))} {per.Count}");
             }
 
             ConsoleFormats.Divider();
