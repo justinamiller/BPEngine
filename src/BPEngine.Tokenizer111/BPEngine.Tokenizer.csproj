@@ -5,9 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ImportGroup>
+    <InternalsVisibleTo Include="BPEngine.UnitTest" />
+    <InternalsVisibleTo Include="BPEngine.Cli" />
 
-  <ItemGroup>
-    <ProjectReference Include="..\BPEngine.Tokenizer\BPEngine.Tokenizer.csproj" />
-  </ItemGroup>
-
+  </ImportGroup>
 </Project>

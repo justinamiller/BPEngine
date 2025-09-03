@@ -20,7 +20,7 @@ namespace BPEngine.Trainer
                 {
                     if (useGptRegex)
                     {
-                        foreach (var tok in BPEngine.Tokenizer.RegexPreTokenizer.Split(line))
+                        foreach (var tok in Tokenizer.Core.RegexPreTokenizer.Split(line))
                             if (tok.Length > 0) yield return tok;
                     }
                     else

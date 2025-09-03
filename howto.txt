@@ -1,0 +1,104 @@
+Public files (API surface)
+
+ITokenizer.cs
+Minimal contract so callers can depend on an interface.
+
+ByteLevelBPETokenizer.cs
+Concrete GPT-style byte-level BPE implementation.
+
+TokenizerFactory.cs
+Convenience to build a tokenizer from files (merges/vocab/specials).
+
+VocabJsonReader.cs (optional-public)
+Handy loader if callers want to read vocab.json themselves.
+
+MergesReader.cs (optional-public)
+Handy loader if callers want to read merges.txt themselves.
+
+TokenizerOptions.cs (optional-public)
+Only if you want configurable behavior exposed (max length, etc.).
+
+Keep these internal
+
+RegexPreTokenizer.cs
+
+ByteUnicodeMapper.cs
+
+BpeRanks.cs
+
+MergeApplier.cs
+
+TokenCache.cs
+
+SpecialTokenRegistry.cs / ISpecialTokenRegistry.cs
+
+IVocabStore.cs / VocabStore.cs
+
+IMergesProvider.cs
+
+TokenizerDiagnostics.cs (expose via a debug hook later if needed)
+
+Guards.cs, Exceptions.cs (you can keep custom exceptions public if you want callers to catch them explicitly; otherwise internal)
+
+Suggested namespace & visibility
+
+Public types in BPEngine.Tokenizer namespace.
+
+All helpers marked internal.
+
+Tests can access internals via:
+
+<!-- In BPEngine.Tokenizer.csproj -->
+<ItemGroup>
+  <InternalsVisibleTo Include="BPEngine.Tests" />
+</ItemGroup>
+
+What users will actually do (examples)
+
+1) Quick start (factory)
+
+using BPEngine.Tokenizer;
+
+var tok = TokenizerFactory.CreateFromFiles(
+    mergesPath: "gpt2_merges.txt",
+    vocabPath:  "vocab.json",
+    specials: new[] { ("<|bos|>", 0), ("<|eos|>", 1), ("<|pad|>", 2) }
+);
+
+int[] ids = tok.Encode("<|bos|>Hello, world!<|eos|>");
+string text = tok.Decode(ids);
+
+
+2) Manual construction
+
+using BPEngine.Tokenizer;
+
+var vocab   = VocabJsonReader.Load("vocab.json");
+var specials = new Dictionary<string,int> { ["<|bos|>"]=0, ["<|eos|>"]=1 };
+var tok = new ByteLevelBPETokenizer("gpt2_merges.txt", vocab, specials);
+
+NuGet packaging
+
+If/when you ship a NuGet package, include only:
+
+BPEngine.Tokenizer.dll (with the public types above)
+
+XML docs (nice-to-have)
+
+No demo data (merges/vocab) in the package — link users to documentation or provide a separate sample zip/repo.
+
+CLI is separate
+
+BPEngine.Cli is an app users run, not reference. It should remain a separate project that depends on the library.
+
+TL;DR — Public API (recommended):
+
+ITokenizer
+
+ByteLevelBPETokenizer
+
+TokenizerFactory
+
+(optional) VocabJsonReader, MergesReader, TokenizerOptions
+
+Everything else: internal (with InternalsVisibleTo for tests). This gives you freedom to optimize/refactor internals without breaking consumers.

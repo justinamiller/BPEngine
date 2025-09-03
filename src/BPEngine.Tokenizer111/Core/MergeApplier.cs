@@ -25,19 +25,14 @@ namespace BPEngine.Tokenizer.Core
             TokenCache? cache = null,
             TokenizerDiagnostics? diag = null)
         {
-            if(diag is null)
-            {
-                diag = new TokenizerDiagnostics();
-            }
-
             // Fast path: cache lookup
             if (cache is not null && cache.TryGet(token, out var cached))
             {
-                diag.MergeCacheHits++;
+                diag?.MergeCacheHits++;
                 // Split on single space — we only ever join with ' ' below
                 return cached.Split(' ');
             }
-            diag.MergeCacheMisses++;
+            diag?.MergeCacheMisses++;
 
             // Split token into "characters" (each piece is a one-char string)
             // NOTE: We keep strings here because ranks are on string pairs.
