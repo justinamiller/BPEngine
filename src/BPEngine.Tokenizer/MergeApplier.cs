@@ -1,5 +1,4 @@
 ﻿using BPEngine.Tokenizer.Caching;
-using BPEngine.Tokenizer.Core;
 using BPEngine.Tokenizer.Performance;
 using System;
 using System.Collections.Generic;

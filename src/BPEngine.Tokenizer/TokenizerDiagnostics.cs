@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BPEngine.Tokenizer.Core
+namespace BPEngine.Tokenizer
 {
     public sealed class TokenizerDiagnostics
     {

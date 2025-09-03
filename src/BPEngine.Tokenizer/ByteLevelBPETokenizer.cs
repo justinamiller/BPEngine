@@ -1,7 +1,9 @@
-﻿namespace BPEngine.Tokenizer.Core
+﻿using BPEngine.Tokenizer.Core;
+
+namespace BPEngine.Tokenizer
 {
-    using global::BPEngine.Tokenizer.Caching;
-    using global::BPEngine.Tokenizer.Performance;
+    using BPEngine.Tokenizer.Caching;
+    using BPEngine.Tokenizer.Performance;
     using System;
     using System.Collections.Generic;
     using System.IO;
@@ -30,8 +32,8 @@
         private readonly SpecialTokenRegistry _specials;
 
         // NEW: LRU caches
-        private readonly LruTokenCache _mergeCache = new(capacity: 50_000);
-        private readonly LruTokenCache _decodeCache = new(capacity: 50_000);
+        private readonly LruTokenCache _mergeCache;
+        private readonly LruTokenCache _decodeCache;
 
         private readonly TokenizerDiagnostics _diag = new();
 
@@ -48,6 +50,11 @@
             TokenizerOptions? options = null)
         {
             _opts = options ?? new TokenizerOptions();
+
+            _mergeCache = new(capacity: _opts.MergeCacheCapacity);
+
+            _decodeCache = new(capacity: _opts.DecodeCacheCapacity);
+
 
             // Load BPE ranks (pair -> rank)
             _ranks = MergesReader.LoadRanks(mergesPath);
