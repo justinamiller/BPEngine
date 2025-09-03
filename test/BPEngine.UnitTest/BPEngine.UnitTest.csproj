@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\BPEngine.Cli\BPEngine.Cli.csproj" />
     <ProjectReference Include="..\..\src\BPEngine.Tokenizer\BPEngine.Tokenizer.csproj" />
+    <ProjectReference Include="..\..\src\BPEngine.Trainer\BPEngine.Trainer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
