@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{58D294C7-DA00-4EC6-8514-5B83325DA2C2}"
 	ProjectSection(SolutionItems) = preProject
+		BIG_gpt2_merges.txt = BIG_gpt2_merges.txt
+		BIG_vocab.json = BIG_vocab.json
 		data\gpt2_merges.txt = data\gpt2_merges.txt
 		data\vocab.json = data\vocab.json
 	EndProjectSection
@@ -34,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{44FD0095-1
 	ProjectSection(SolutionItems) = preProject
 		HowTo.md = HowTo.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Test", "test\BPEngine.Test\BPEngine.Test.csproj", "{8EAC3F39-2F3E-415E-AB81-807DD26884F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,10 @@ Global
 		{02CE455B-BF68-4FFC-8927-3F1D8D34E946}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02CE455B-BF68-4FFC-8927-3F1D8D34E946}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02CE455B-BF68-4FFC-8927-3F1D8D34E946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EAC3F39-2F3E-415E-AB81-807DD26884F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAC3F39-2F3E-415E-AB81-807DD26884F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAC3F39-2F3E-415E-AB81-807DD26884F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAC3F39-2F3E-415E-AB81-807DD26884F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +79,7 @@ Global
 		{7987F5D6-55D4-485B-A587-8CD43A85CCC5} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F8418F57-2F20-42D6-B8B9-3069AFCF19C6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{02CE455B-BF68-4FFC-8927-3F1D8D34E946} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8EAC3F39-2F3E-415E-AB81-807DD26884F0} = {3C311F5C-AA80-456A-B55E-218838061A23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FEA448E-D12D-4089-8EDD-8DEB296F2F68}

@@ -24,7 +24,8 @@ namespace BPEngine.Cli
                     "validate" => Commands.ValidateCommand.Run(rest),
                     "ngram" => Commands.NGramCommand.Run(rest),
                     "analyze" => Commands.AnalyzeCommand.Run(rest),
-                    "transformer" => Commands.TransformerCommand.Run(rest), 
+                    "transformer" => Commands.TransformerCommand.Run(rest),
+                    "snippet" => Commands.SnippetCommand.Run(rest),
                     _ => Unknown(cmd)
                 };
             }
