@@ -85,7 +85,7 @@ namespace BPEngine.Cli
 
         public static string Require(this Dictionary<string, List<string>> flags, string name, string? err = null)
         {
-            if (!flags.TryGetValue(name, out var list) || list.Count == 0 || string.IsNullOrWhiteSpace(list[0]))
+            if (!flags.TryGetValue(name, out var list) || list.Count == 0 || list[0].IsNullOrWhiteSpace())
                 throw new ArgumentException(err ?? $"Missing required flag {name}");
             return list[0];
         }

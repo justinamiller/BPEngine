@@ -31,7 +31,7 @@ namespace BPEngine.Cli.Commands
 
             // Load tokenizer
             Dictionary<string, int>? vocab = null;
-            if (!string.IsNullOrWhiteSpace(vocabPath))
+            if (!vocabPath.IsNullOrWhiteSpace())
             {
                 vocab = VocabJsonReader.Load(vocabPath!);
             }

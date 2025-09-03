@@ -81,7 +81,7 @@ namespace BPEngine.Cli
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(merges) || string.IsNullOrWhiteSpace(text))
+            if (merges.IsNullOrWhiteSpace() || text.IsNullOrWhiteSpace())
                 throw new ArgumentException("encode requires --merges and --text");
 
             Dictionary<string, int>? vocab = null;
@@ -117,7 +117,7 @@ namespace BPEngine.Cli
                 }
             }
 
-            if (string.IsNullOrWhiteSpace(merges) || string.IsNullOrWhiteSpace(vocabPath) || string.IsNullOrWhiteSpace(idList))
+            if (merges.IsNullOrWhiteSpace() || vocabPath.IsNullOrWhiteSpace() || idList.IsNullOrWhiteSpace())
                 throw new ArgumentException("decode requires --merges, --vocab, and --ids");
 
             var vocab = VocabJsonReader.Load(vocabPath);

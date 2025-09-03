@@ -10,7 +10,7 @@ namespace BPEngine.Tokenizer.Utilities
     {
         public static void FileExists(string path, string name)
         {
-            if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path))
+            if (path.IsNullOrWhiteSpace() || !System.IO.File.Exists(path))
                 throw new TokenizerConfigException($"{name} file not found: {path}");
         }
     }

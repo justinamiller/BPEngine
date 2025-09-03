@@ -17,7 +17,7 @@ namespace BPEngine.Tokenizer.Core
             foreach (var raw in File.ReadLines(path))
             {
                 var line = raw.Trim();
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (line.IsNullOrWhiteSpace()) continue;
                 if (line.StartsWith("#")) continue;
                 var parts = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length != 2) continue;

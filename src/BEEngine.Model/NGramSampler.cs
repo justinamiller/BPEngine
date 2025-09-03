@@ -21,7 +21,7 @@ namespace BPEngine.Models
             float temperature = 1.0f,
             int topK = 0)
         {
-            var vocab = string.IsNullOrWhiteSpace(vocabPath) ? null : VocabJsonReader.Load(vocabPath);
+            var vocab = vocabPath.IsNullOrWhiteSpace() ? null : VocabJsonReader.Load(vocabPath);
             var tok = new ByteLevelBPETokenizer(mergesPath, vocab, specials ?? new());
 
             var history = new List<int>();

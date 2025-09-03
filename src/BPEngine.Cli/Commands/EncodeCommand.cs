@@ -18,7 +18,7 @@ namespace BPEngine.Cli.Commands
             var specials = ParseSpecials(flags);
 
             Dictionary<string, int>? vocabMap = null;
-            if (!string.IsNullOrWhiteSpace(vocab))
+            if (!vocab.IsNullOrWhiteSpace())
                 vocabMap = VocabJsonReader.Load(vocab!);
 
             var tok = new ByteLevelBPETokenizer(

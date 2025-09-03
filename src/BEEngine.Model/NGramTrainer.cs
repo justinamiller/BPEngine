@@ -16,7 +16,7 @@ namespace BPEngine.Models
             IEnumerable<string> corpusPaths,
             int maxLines = int.MaxValue)
         {
-            var vocab = string.IsNullOrWhiteSpace(vocabPath) ? null : VocabJsonReader.Load(vocabPath);
+            var vocab = vocabPath.IsNullOrWhiteSpace() ? null : VocabJsonReader.Load(vocabPath);
             var tok = new ByteLevelBPETokenizer(mergesPath, vocab, specials ?? new());
             int vocabSize = (vocab?.Count ?? 30000) + (specials?.Count ?? 0); // rough cap if no vocab
             var model = new NGramModel(order: order, addK: 1.0f, vocabSize: vocabSize);

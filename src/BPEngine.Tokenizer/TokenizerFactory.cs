@@ -16,7 +16,7 @@ namespace BPEngine.Tokenizer
         {
             var ranks = MergesReader.LoadRanks(mergesPath);
             Dictionary<string, int>? vocab = null;
-            if (!string.IsNullOrWhiteSpace(vocabPath))
+            if (!vocabPath.IsNullOrWhiteSpace())
                 vocab = VocabJsonReader.Load(vocabPath);
             var specialMap = specials?.ToDictionary(x => x.token, x => x.id) ?? new();
             return new ByteLevelBPETokenizer(mergesPath, vocab, specialMap);
