@@ -12,6 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{58D294C7-D
 		BIG_gpt2_merges.txt = BIG_gpt2_merges.txt
 		BIG_vocab.json = BIG_vocab.json
 		data\gpt2_merges.txt = data\gpt2_merges.txt
+		TOKENIZER_DATA_GUIDE.md = TOKENIZER_DATA_GUIDE.md
 		data\vocab.json = data\vocab.json
 	EndProjectSection
 EndProject
