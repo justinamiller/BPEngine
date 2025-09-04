@@ -13,7 +13,7 @@ namespace BPEngine.Cli
                 return ExitCodes.Ok;
             }
 
-            var (cmd, rest) = ArgParser.SplitCommand(args);
+                ArgParser.SplitCommand(args, out string cmd, out string[] rest);
 
             try
             {

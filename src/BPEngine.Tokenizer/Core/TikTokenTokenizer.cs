@@ -9,13 +9,14 @@ namespace BPEngine.Tokenizer.Core
     /// Strategy: greedy longest-match using a trie over tokens in Ranks; fallback to byte tokens.
     /// NOTE: Provide byte tokens in ranks for robust fallback.
     /// </summary>
-    public sealed class TikTokenTokenizer : ITokenizer
+    public sealed class TikTokenTokenizer : ITokenizer, IPieceLookup
     {
         private readonly TikTokenModel _model;
         private readonly IPreTokenizer _pre;
         private readonly ISet<string> _allow;
         private readonly ISet<string> _disallow;
         private readonly TrieNode _root = new();
+        private readonly Dictionary<int, string> _idToPiece = new();
 
         private sealed class TrieNode
         {
@@ -31,6 +32,17 @@ namespace BPEngine.Tokenizer.Core
             _disallow = opt.DisallowedSpecial ?? new HashSet<string> { "all" };
 
             BuildTrie(model.Ranks);
+
+
+            foreach (var kv in _model.Ranks)
+            {
+                _idToPiece[kv.Value] = kv.Key;
+            }
+        }
+
+        public string GetPiece(int id)
+        {
+         return   _idToPiece.TryGetValue(id, out var s) ? s : string.Empty;
         }
 
         private void BuildTrie(Dictionary<string, int> ranks)

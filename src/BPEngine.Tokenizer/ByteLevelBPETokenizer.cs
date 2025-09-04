@@ -21,7 +21,7 @@ namespace BPEngine.Tokenizer
     ///
     /// Public surface stays minimal: Encode / Decode.
     /// </summary>
-    public sealed class ByteLevelBPETokenizer : ITokenizer
+    public sealed class ByteLevelBPETokenizer : ITokenizer, IPieceLookup
     {
         // Static map reused across instances (safe, deterministic)
         private static readonly ByteUnicodeMap _map = ByteUnicodeMap.Build();
@@ -36,6 +36,7 @@ namespace BPEngine.Tokenizer
         private readonly LruTokenCache _decodeCache;
 
         private readonly TokenizerDiagnostics _diag = new();
+
 
         private readonly TokenizerOptions _opts;
 
@@ -107,6 +108,11 @@ namespace BPEngine.Tokenizer
 
             return ids.ToArray();
         }
+
+        public string GetPiece(int id)
+        {
+            return _idToToken.TryGetValue(id, out var s) ? s : string.Empty;
+        } 
 
         public string Decode(IEnumerable<int> tokenIds)
         {

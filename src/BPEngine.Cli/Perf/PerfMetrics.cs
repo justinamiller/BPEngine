@@ -101,9 +101,9 @@ namespace BPEngine.Cli.Perf
         public double TokensPerSec { get; set; }
         public double PeakWorkingSetMB { get; set; }
         public long AllocatedBytes { get; set; }
-        public int GC0 { get; set; }
-        public int GC1 { get; set; }
-        public int GC2 { get; set; }
+        public long GC0 { get; set; }
+        public long GC1 { get; set; }
+        public long GC2 { get; set; }
         public PerfEnv Env { get; set; } = new();
         public Dictionary<string, object> Extra { get; set; } = new();
     }

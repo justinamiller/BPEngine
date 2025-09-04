@@ -14,6 +14,8 @@ public sealed class BPEngineSdk : IAsyncDisposable
     private readonly Func<int, string> _idToPiece;
     private readonly TfIdfIndex? _rag;
     private readonly JsonConstrainedDecoder _jsonConstraint = new();
+    private TfIdfIndex? _ragIndex;
+    private string[] _ragCorpusDocs = Array.Empty<string>();
 
     private BPEngineSdk(BpeSdkOptions opt, ITokenizer tok, Func<int, string> idToPiece, TfIdfIndex? rag)
     { _opt = opt; _tok = tok; _idToPiece = idToPiece; _rag = rag; }
@@ -80,10 +82,17 @@ public sealed class BPEngineSdk : IAsyncDisposable
 
     public RagResult QueryRag(string query, int k = 5)
     {
-        if (_rag is null) return new RagResult(Array.Empty<RagHit>());
-        var hits = _rag.Query(query, k);
-        var docs = File.ReadAllText(_opt.CorpusPath!).Split("\n\n");
-        var list = hits.Select(h => new RagHit(h.Doc, h.Score, docs[h.Doc])).ToList();
+        var idx = _ragIndex ?? _rag; // loaded or built-at-start
+        if (idx is null) return new RagResult(Array.Empty<RagHit>());
+        var hits = idx.Query(query, k);
+        var docs = _ragCorpusDocs.Length > 0
+            ? _ragCorpusDocs
+            : (!string.IsNullOrWhiteSpace(_opt.CorpusPath)
+                ? File.ReadAllText(_opt.CorpusPath!).Split("\n\n")
+                : Array.Empty<string>());
+
+        var list = hits.Select(h =>
+            new RagHit(h.Doc, h.Score, (h.Doc >= 0 && h.Doc < docs.Length) ? docs[h.Doc] : string.Empty)).ToList();
         return new RagResult(list);
     }
 
@@ -121,13 +130,80 @@ public sealed class BPEngineSdk : IAsyncDisposable
 
     public ValueTask<AnalyzeReport> AnalyzeAsync(string corpusPath, int top = 20)
     {
-        // Call your analyzer; placeholder summary here
-        var text = File.ReadAllText(corpusPath);
-        var ids = _tok.Encode(text);
-        var total = ids.Length;
-        var topTokens = new List<(string, int)>();
-        return ValueTask.FromResult(new AnalyzeReport(total, topTokens));
+        var s = TokenStatsAnalyzer.Analyze(_tok, corpusPath, top);
+        // Flatten bigrams into the report if/when you add them to the DTO; for now return top tokens.
+        return ValueTask.FromResult(new AnalyzeReport(
+            TotalTokens: s.TotalTokens,
+            TopTokens: s.TopTokens
+        ));
     }
 
+
     public ValueTask DisposeAsync() => ValueTask.CompletedTask;
+
+    public async Task BuildRagAsync(string corpusPath, string indexPath)
+    {
+        var idx = new TfIdfIndex();
+        foreach (var doc in File.ReadAllText(corpusPath).Split("\n\n"))
+            idx.AddDocument(doc.Trim());
+        idx.Fit();
+        idx.Save(indexPath);
+        await Task.CompletedTask;
+    }
+
+    public async Task LoadRagAsync(string indexPath, string? corpusPathForSnippets = null)
+    {
+        var idx = TfIdfIndex.Load(indexPath);
+        _ragIndex = idx;
+        _ragCorpusDocs = corpusPathForSnippets != null
+            ? File.ReadAllText(corpusPathForSnippets).Split("\n\n")
+            : Array.Empty<string>();
+        await Task.CompletedTask;
+    }
+
+    public async Task<GenerateResult> GenerateJsonAsync(string prompt, string schemaJson, bool useRag = true, int maxNew = 128)
+    {
+        // 1) Retrieve a few relevant snippets (optional)
+        var contextSnippets = new List<string>();
+        if (useRag)
+        {
+            var rr = QueryRag(prompt, 3);
+            foreach (var h in rr.Hits) contextSnippets.Add(h.Snippet);
+        }
+
+        // 2) Ultra-simple extraction heuristic: summary = first relevant line; nextSteps = bullet-like lines.
+        var extracted = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        var joined = string.Join("\n", contextSnippets);
+        var lines = joined.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+        string? summary = lines.FirstOrDefault(l => l.StartsWith("Summary:", StringComparison.OrdinalIgnoreCase))
+                          ?? lines.FirstOrDefault(l => l.StartsWith("Impact:", StringComparison.OrdinalIgnoreCase))
+                          ?? lines.FirstOrDefault();
+
+        var steps = lines.Where(l =>
+            l.StartsWith("Next Steps:", StringComparison.OrdinalIgnoreCase) ||
+            l.StartsWith("- ") || l.StartsWith("* ") || l.Contains(" • "))
+            .ToArray();
+
+        if (summary != null) extracted["summary"] = summary.Replace("Summary:", "", StringComparison.OrdinalIgnoreCase).Trim();
+        if (steps.Length > 0) extracted["nextSteps"] = string.Join("\n", steps.Select(s => s.TrimStart('-', '*', ' ', '•').Trim()));
+
+        // 3) Conform to schema & validate (always-valid JSON output)
+        var obj = JsonSchemaConformer.Conform(schemaJson, extracted);
+        if (!JsonSchemaConformer.TryValidate(schemaJson, obj, out var err))
+        {
+            // Auto-repair fallback: ensure required keys exist (Conform already did); attach error.
+            obj["note"] = $"auto_repaired: {err}";
+        }
+
+        // 4) Return both the pretty JSON and a plain-text “explanation” if desired
+        var jsonText = obj.ToJsonString(new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+
+        return await Task.FromResult(new GenerateResult(
+            Text: $"Prompt: {prompt}\n\n{(useRag ? "RAG used.\n" : "")}JSON follows.",
+            Json: jsonText
+        ));
+    }
+
+
 }

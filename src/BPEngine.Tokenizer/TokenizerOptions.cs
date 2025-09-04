@@ -15,6 +15,11 @@ namespace BPEngine.Tokenizer
         RegexPreset Regex = RegexPreset.Gpt2,
         ISet<string>? AllowedSpecial = null,
         ISet<string>? DisallowedSpecial = null,
-        bool UseByteFallback = true
+        bool UseByteFallback = true,
+            int MergeCacheCapacity = 50_000,
+     int DecodeCacheCapacity = 50_000,
+             int? MaxLength,
+    bool ThrowOnUnknownId = true,
+     int CacheCapacity= 0
     );
 }
