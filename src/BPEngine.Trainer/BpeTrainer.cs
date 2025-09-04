@@ -1,6 +1,9 @@
 
-using System.Text;
 using BPEngine.Tokenizer;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace BPEngine.Trainer
 {
@@ -122,5 +125,131 @@ namespace BPEngine.Trainer
 
             return (merges, vocab);
         }
+
+        public async Task TrainAsync(
+    string corpusPath,
+    string mergesOutPath,
+    string vocabOutPath,
+    CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(corpusPath))
+                throw new ArgumentException("corpusPath is required", nameof(corpusPath));
+            if (!File.Exists(corpusPath))
+                throw new FileNotFoundException("Corpus file not found", corpusPath);
+
+            await TrainAsync(new[] { corpusPath }, mergesOutPath, vocabOutPath, ct).ConfigureAwait(false);
+        }
+
+        public async Task TrainAsync(
+            IEnumerable<string> corpusPaths,
+            string mergesOutPath,
+            string vocabOutPath,
+            CancellationToken ct = default)
+        {
+            if (corpusPaths is null) throw new ArgumentNullException(nameof(corpusPaths));
+            var paths = corpusPaths.ToArray();
+            if (paths.Length == 0) throw new ArgumentException("At least one corpus path is required", nameof(corpusPaths));
+            foreach (var p in paths)
+                if (!File.Exists(p)) throw new FileNotFoundException("Corpus file not found", p);
+
+            // Compute in-memory artifacts (reuses your existing training routine)
+            ct.ThrowIfCancellationRequested();
+            var (merges, vocab) = Train(paths);
+
+            // Ensure output dir exists
+            var outDir = Path.GetDirectoryName(Path.GetFullPath(mergesOutPath));
+            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+            outDir = Path.GetDirectoryName(Path.GetFullPath(vocabOutPath));
+            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+
+            // Write to temp files first (atomic publish)
+            var tmpMerges = mergesOutPath + ".tmp";
+            var tmpVocab = vocabOutPath + ".tmp";
+
+            // 1) merges.txt — one pair per line: "left right"
+            await using (var fs = new FileStream(tmpMerges, FileMode.Create, FileAccess.Write, FileShare.None, 1 << 16, useAsync: true))
+            await using (var sw = new StreamWriter(fs, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false)))
+            {
+                // (Optional) GPT-2 files sometimes start with a version comment; safe to omit.
+                // await sw.WriteLineAsync("#version: bpe").ConfigureAwait(false);
+
+                foreach (var (Left, Right) in merges)
+                {
+                    ct.ThrowIfCancellationRequested();
+                    await sw.WriteLineAsync($"{Left} {Right}").ConfigureAwait(false);
+                }
+            }
+
+            // 2) vocab.json — token -> id
+            var jsonOpts = new JsonSerializerOptions
+            {
+                WriteIndented = false,
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All) // keep full unicode, avoid over-escaping
+            };
+
+            await using (var fs = new FileStream(tmpVocab, FileMode.Create, FileAccess.Write, FileShare.None, 1 << 16, useAsync: true))
+            {
+                await JsonSerializer.SerializeAsync(fs, vocab, jsonOpts, ct).ConfigureAwait(false);
+            }
+
+            ct.ThrowIfCancellationRequested();
+
+            // Atomic publish (replace if exists)
+            if (File.Exists(mergesOutPath)) File.Delete(mergesOutPath);
+            if (File.Exists(vocabOutPath)) File.Delete(vocabOutPath);
+            File.Move(tmpMerges, mergesOutPath);
+            File.Move(tmpVocab, vocabOutPath);
+        }
+
+        /// <summary>
+        /// Synchronous helper: train and write artifacts to files (merges.txt + vocab.json).
+        /// </summary>
+        public void TrainToFiles(string corpusPath, string mergesOutPath, string vocabOutPath)
+            => TrainToFiles(new[] { corpusPath }, mergesOutPath, vocabOutPath);
+
+        /// <summary>
+        /// Synchronous helper: train and write artifacts to files (merges.txt + vocab.json).
+        /// </summary>
+        public void TrainToFiles(IEnumerable<string> corpusPaths, string mergesOutPath, string vocabOutPath)
+        {
+            if (corpusPaths is null) throw new ArgumentNullException(nameof(corpusPaths));
+            var paths = corpusPaths.ToArray();
+            if (paths.Length == 0) throw new ArgumentException("At least one corpus path is required", nameof(corpusPaths));
+            foreach (var p in paths)
+                if (!File.Exists(p)) throw new FileNotFoundException("Corpus file not found", p);
+
+            var (merges, vocab) = Train(paths);
+
+            var outDir = Path.GetDirectoryName(Path.GetFullPath(mergesOutPath));
+            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+            outDir = Path.GetDirectoryName(Path.GetFullPath(vocabOutPath));
+            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+
+            var tmpMerges = mergesOutPath + ".tmp";
+            var tmpVocab = vocabOutPath + ".tmp";
+
+            using (var fs = new FileStream(tmpMerges, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (var sw = new StreamWriter(fs, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false)))
+            {
+                foreach (var (Left, Right) in merges)
+                    sw.WriteLine($"{Left} {Right}");
+            }
+
+            var jsonOpts = new JsonSerializerOptions
+            {
+                WriteIndented = false,
+                Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+            };
+            using (var fs = new FileStream(tmpVocab, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                JsonSerializer.Serialize(fs, vocab, jsonOpts);
+            }
+
+            if (File.Exists(mergesOutPath)) File.Delete(mergesOutPath);
+            if (File.Exists(vocabOutPath)) File.Delete(vocabOutPath);
+            File.Move(tmpMerges, mergesOutPath);
+            File.Move(tmpVocab, vocabOutPath);
+        }
+
     }
 }

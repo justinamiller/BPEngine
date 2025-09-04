@@ -1,4 +1,7 @@
-﻿namespace BPEngine.Transformers
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+namespace BPEngine.Transformers
 {
     public static class Sampling
     {
@@ -7,7 +10,8 @@
             // Take last position
             int n = logits.Length;
             if (n < vocab) throw new ArgumentException("logits shorter than vocab width");
-            var span = logits.AsSpan(n - vocab, vocab);
+            int baseIdx = n - vocab;
+            var span = logits.AsSpan(baseIdx, vocab);
 
             // temperature
             if (temperature <= 0) temperature = 1e-6f;
@@ -16,21 +20,30 @@
             // top-k filter (keep topK; others to -inf)
             if (topK > 0 && topK < vocab)
             {
-                // find threshold
-                var idx = Enumerable.Range(0, vocab).OrderByDescending(i => span[i]).Take(topK).ToArray();
-                var keep = new HashSet<int>(idx);
+                // Build index array and sort by value WITHOUT touching 'span' in a lambda
+                int[] idx = Enumerable.Range(0, vocab).ToArray();
+                Array.Sort(idx, (a, b) => logits[baseIdx + b].CompareTo(logits[baseIdx + a])); // desc
+
+                // mark all but topK as -inf
+                var keep = new HashSet<int>(idx.Take(topK));
                 for (int i = 0; i < vocab; i++)
                     if (!keep.Contains(i)) span[i] = float.NegativeInfinity;
             }
 
-            // softmax + sample
-            // (reuse a local copy to avoid modifying caller)
+            // softmax + sample (use a local copy)
             var tmp = span.ToArray();
-            // softmax
+
+            // softmax (stable)
             float max = tmp.Max();
             double sum = 0;
-            for (int i = 0; i < tmp.Length; i++) { var e = Math.Exp(tmp[i] - max); tmp[i] = (float)e; sum += e; }
-            var r = new Random().NextDouble() * sum;
+            for (int i = 0; i < tmp.Length; i++)
+            {
+                double e = Math.Exp(tmp[i] - max);
+                tmp[i] = (float)e;
+                sum += e;
+            }
+
+            double r = new Random().NextDouble() * sum;
             double acc = 0;
             for (int i = 0; i < tmp.Length; i++)
             {

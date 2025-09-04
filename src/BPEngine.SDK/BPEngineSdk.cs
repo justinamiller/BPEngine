@@ -97,18 +97,51 @@ public sealed class BPEngineSdk : IAsyncDisposable
         return new RagResult(list);
     }
 
-    public async Task<TrainResult> TrainTokenizerAsync(string corpusPath, string outDir, int vocabSize = 32000, int minPair = 2)
+    public async Task<TrainResult> TrainTokenizerAsync(string corpusPath,string outDir,int vocabSize = 32_000,int minPair = 2, CancellationToken ct = default)
     {
-        Directory.CreateDirectory(outDir);
-        var mergesOut = Path.Combine(outDir, "merges.txt");
-        var vocabOut = Path.Combine(outDir, "vocab.json");
+        // 1) Validate inputs
+        if (string.IsNullOrWhiteSpace(corpusPath))
+            throw new ArgumentException("corpusPath is required", nameof(corpusPath));
+        if (!File.Exists(corpusPath))
+            throw new FileNotFoundException("Corpus file not found", corpusPath);
+        if (vocabSize <= 0)
+            throw new ArgumentOutOfRangeException(nameof(vocabSize), "vocabSize must be > 0");
+        if (minPair < 1)
+            throw new ArgumentOutOfRangeException(nameof(minPair), "minPair must be >= 1");
 
-        // Call into your Trainer APIs (pseudo—replace with your real class names)
-        var trainer = new BpeTrainer(vocabSize: vocabSize, minPair: minPair);
-        await trainer.TrainAsync(corpusPath, mergesOut, vocabOut);
+        // 2) Normalize output paths and ensure directory exists
+        var outDirFull = Path.GetFullPath(outDir ?? ".");
+        Directory.CreateDirectory(outDirFull);
 
+        var mergesOut = Path.Combine(outDirFull, "merges.txt");
+        var vocabOut = Path.Combine(outDirFull, "vocab.json");
+
+        // 3) Write to temp files and then move atomically to avoid partial files on crash
+        var tmpMerges = Path.Combine(outDirFull, "merges.txt.tmp");
+        var tmpVocab = Path.Combine(outDirFull, "vocab.json.tmp");
+
+        // 4) Call your trainer (replace with your actual class)
+        //    Recommended trainer API shape:
+        //    var trainer = new BpeTrainer(vocabSize, minPair);
+        //    await trainer.TrainAsync(corpusPath, tmpMerges, tmpVocab, ct).ConfigureAwait(false);
+
+        var trainer = new BpeTrainer(new TrainerOptions() { VocabSize = vocabSize, MinPairFrequency = minPair });
+
+
+        await trainer.TrainAsync(corpusPath, tmpMerges, tmpVocab, ct).ConfigureAwait(false);
+
+        ct.ThrowIfCancellationRequested();
+
+        // 5) Atomically publish artifacts
+        if (File.Exists(mergesOut)) File.Delete(mergesOut);
+        if (File.Exists(vocabOut)) File.Delete(vocabOut);
+        File.Move(tmpMerges, mergesOut);
+        File.Move(tmpVocab, vocabOut);
+
+        // 6) Return absolute paths so callers don’t depend on current directory
         return new TrainResult(mergesOut, vocabOut);
     }
+
 
     public ValueTask<AnalyzeReport> AnalyzeAsync(string corpusPath, int top = 20)
     {

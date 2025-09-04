@@ -11,11 +11,7 @@ namespace BPEngine.Tokenizer
         /// <param name="cache">
         /// LRU cache of the space-joined merge result for a token (token -> "p1 p2 ...").
         /// </param>
-        public static IEnumerable<string> Apply(
-            string token,
-            IReadOnlyDictionary<(string, string), int> ranks,
-            LruTokenCache? cache = null,
-            TokenizerDiagnostics diag = null)
+        internal static IEnumerable<string> Apply(string token,IReadOnlyDictionary<(string, string), int> ranks,LruTokenCache? cache = null,TokenizerDiagnostics diag = null)
         {
 
             if(diag is null)
