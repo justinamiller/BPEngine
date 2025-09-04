@@ -217,3 +217,45 @@ Example `vocab.json` entry:
 - Issues and requests: GitHub Issues (planned).
 
 ---
+
+## Working with `corpus.txt`
+
+The file [`./data/demo/corpus.txt`](./data/demo/corpus.txt) is the **training and demo dataset** for BPEngine.  
+It contains realistic enterprise IT text such as incident tickets, change requests, RCA notes, and operational guides.
+
+### Why it matters
+- **Tokenizer training** (`train`): builds merges + vocab tuned to this text.
+- **Corpus analysis** (`analyze`): profiles token usage, length distributions, and frequent n-grams.
+- **N-gram baseline** (`ngram train/generate`): learns simple predictive models from this text.
+- **Head training** (`train-head` / `gen-head`): lets the tiny Transformer actually *learn* token transitions from your domain.
+
+### Improving results
+- **Add more examples** to `corpus.txt` to strengthen learning.  
+  - E.g. paste in more incident summaries, postmortems, runbooks, or architecture notes.  
+  - Then rerun `train-head` to improve the generated outputs.
+- **Keep the tokenizer fixed** if you want reproducibility.  
+- **Retrain the tokenizer** (`train`) if you expand into new domains with lots of new terminology (e.g. VINs, medical codes, financial tickers).  
+  - This produces new `merges.txt` + `vocab.json`.
+
+### Rule of thumb
+- *Just more training examples?* → Update `corpus.txt` only.  
+- *New vocabulary domain?* → Retrain merges + vocab.  
+- *Demo reproducibility?* → Leave merges/vocab fixed and only expand `corpus.txt`.
+
+### Example
+```bash
+# Train head on updated corpus
+dotnet run --project ./src/BPEngine.Cli -- train-head \
+  --merges ./data/demo/BIG_gpt2_merges.txt \
+  --vocab  ./data/demo/BIG_vocab.json \
+  --corpus ./data/demo/corpus.txt \
+  --out ./artifacts/wout.bin \
+  --steps 800 --batch 16 --seqlen 64
+
+# Generate with the trained head
+dotnet run --project ./src/BPEngine.Cli -- gen-head \
+  --merges ./data/demo/BIG_gpt2_merges.txt \
+  --vocab  ./data/demo/BIG_vocab.json \
+  --wout ./artifacts/wout.bin \
+  --prompt "Draft an incident summary:" \
+  --max-new 100
