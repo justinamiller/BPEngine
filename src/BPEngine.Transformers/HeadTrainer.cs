@@ -48,7 +48,7 @@ namespace BPEngine.Transformers
                     if (corpusIds.Length < cfg.SeqLen + 1) throw new ArgumentException("corpus too small for chosen SeqLen");
                     int start = rng.Next(0, corpusIds.Length - (cfg.SeqLen + 1));
                     var input = corpusIds.AsSpan(start, cfg.SeqLen).ToArray();
-                    var target = corpusIds[start + 1..start + 1 + cfg.SeqLen]; // next-token labels
+                    var target = corpusIds.AsSpan(start + 1, cfg.SeqLen).ToArray(); // next-token labels
 
                     // Forward: hidden [T,D]
                     var H = _model.ForwardHidden(input); // [T*D]
