@@ -1,5 +1,4 @@
 ﻿using BPEngine.Tokenizer;
-using BPEngine.Tokenizer.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +30,8 @@ namespace BPEngine.Cli.Commands
             ConsoleFormats.PrintCsv(ids);
             return ExitCodes.Ok;
         }
+
+
 
         private static Dictionary<string, int> ParseSpecials(Dictionary<string, List<string>> flags)
         {

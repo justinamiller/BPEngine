@@ -41,6 +41,21 @@ namespace BPEngine.Cli
             }
         }
 
+        /// <summary>
+        /// Print a sequence of integers as a single comma-separated line.
+        /// Example: 15496,995,123
+        /// </summary>
+        public static void PrintCsv(IEnumerable<int> values)
+        {
+            if (values is null)
+            {
+                Console.WriteLine(string.Empty);
+                return;
+            }
+
+            Console.WriteLine(string.Join(",", values));
+        }
+
         public static void ShowDecodeResult(string mergesPath, string vocabPath, int[] ids, string output)
         {
             switch (_style)
@@ -167,6 +182,25 @@ namespace BPEngine.Cli
                 var slice = ids.Skip(i).Take(group);
                 WriteLine(string.Join(" ", slice.Select(x => x.ToString().PadLeft(5))));
             }
+        }
+
+        /// <summary>
+        /// Print a formatted header line for CLI output.
+        /// Example:
+        /// ==== ENCODE RESULTS ====
+        /// </summary>
+        public static void PrintHeader(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine();
+                return;
+            }
+
+            var line = new string('=', title.Length + 8); // pad with "==== " and " ===="
+            Console.WriteLine(line);
+            Console.WriteLine($"==== {title.ToUpperInvariant()} ====");
+            Console.WriteLine(line);
         }
 
         private static void PrintColumns(IEnumerable<string> items, int columns = 2, int spacing = 3)

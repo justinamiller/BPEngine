@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace BPEngine.Tokenizer.Core
+namespace BPEngine.Tokenizer
 {
     public class VocabJsonReader
     {
