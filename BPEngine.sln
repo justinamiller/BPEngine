@@ -34,10 +34,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Transformers", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{44FD0095-1E35-4144-AE26-425019522E68}"
 	ProjectSection(SolutionItems) = preProject
+		features.md = features.md
 		HowTo.md = HowTo.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Test", "test\BPEngine.Test\BPEngine.Test.csproj", "{8EAC3F39-2F3E-415E-AB81-807DD26884F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{094F3F2B-ADBD-4A8C-8420-79A93CB1056C}"
+	ProjectSection(SolutionItems) = preProject
+		data\itsm-demo\BIG_gpt2_merges.txt = data\itsm-demo\BIG_gpt2_merges.txt
+		data\itsm-demo\BIG_vocab.json = data\itsm-demo\BIG_vocab.json
+		data\itsm-demo\corpus.txt = data\itsm-demo\corpus.txt
+		data\itsm-demo\DEMO.md = data\itsm-demo\DEMO.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +89,7 @@ Global
 		{F8418F57-2F20-42D6-B8B9-3069AFCF19C6} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{02CE455B-BF68-4FFC-8927-3F1D8D34E946} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{8EAC3F39-2F3E-415E-AB81-807DD26884F0} = {3C311F5C-AA80-456A-B55E-218838061A23}
+		{094F3F2B-ADBD-4A8C-8420-79A93CB1056C} = {58D294C7-DA00-4EC6-8514-5B83325DA2C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FEA448E-D12D-4089-8EDD-8DEB296F2F68}

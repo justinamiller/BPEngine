@@ -1,0 +1,68 @@
+#version: 0.2
+Ġ t
+Ġ th
+Ġ the
+Ġ to
+Ġ of
+Ġ a
+Ġ an
+Ġ and
+Ġ in
+Ġ is
+Ġ for
+Ġ with
+Ġ on
+Ġ by
+Ġ from
+Ġ service
+Ġ incident
+Ġ ticket
+Ġ user
+Ġ error
+Ġ data
+Ġ model
+Ġ token
+ing
+ion
+er
+ed
+es
+ly
+re
+on
+at
+en
+al
+ar
+ti
+or
+nt
+ic
+id
+se
+ce
+lo
+og
+rc
+ca
+Ġ root
+Ġ cause
+Ġ summary
+Ġ resolution
+Ġ impact
+Ġ status
+Ġ sla
+Ġ slo
+Ġ alert
+Ġ retry
+Ġ deploy
+Ġ rollout
+Ġ rollback
+Ġ change
+Ġ window
+Ġ outage
+Ġ restore
+Ġ mitigate
+Ġ action
+Ġ next
+Ġ steps

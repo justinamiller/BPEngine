@@ -1,0 +1,51 @@
+# Incident Ticket Samples (enterprise IT)
+Incident: INC-2025-00421
+Severity: P1
+Summary: Authentication outage in US region impacted user login.
+Impact: 37% of login attempts failed with 401/403 errors.
+Root Cause: Token service deploy introduced cache key mismatch.
+Resolution: Rollback deployment, purge stale keys, restore cache.
+Next Steps: Add canary checks, expand dashboard alerts, raise SLO budgets.
+
+Incident: INC-2025-00422
+Severity: P2
+Summary: Elevated latency on checkout API in EU region.
+Impact: 95th percentile latency from 280ms to 1.9s. No data loss.
+Root Cause: Misconfigured connection pool exhausted under peak traffic.
+Resolution: Increase pool size, add backpressure, retry policy tuned.
+Next Steps: Define autoscaling window and error budget policy.
+
+# Change Requests
+Change: CHG-2025-1107
+Owner: Platform Team
+Window: 2025-09-15 02:00-04:00 UTC
+Change Summary: Rollout of token service v2 with improved model and observability.
+Risk: Medium
+Rollback Plan: Revert to v1, restore caches, disable new feature flags.
+
+Change: CHG-2025-1108
+Owner: Security Team
+Window: 2025-10-02 01:00-03:00 UTC
+Change Summary: Rotate signing keys and update auth endpoints.
+Risk: High
+Rollback Plan: Revert keys; restore previous JWKS; widen clock skew temporarily.
+
+# Post-incident RCA Notes
+RCA: 2025-09-01 P1 outage on token service
+User Impact: Login blocked for ~18 minutes; 12.3k failed sessions.
+SLO: 99.9% monthly; Error Budget: 43 minutes; Consumed: 18 minutes.
+Mitigations: Added cache warmup; validated rollout in one region; added alert thresholds.
+Action Items:
+- Add pre-deploy token verification test.
+- Break glass keys stored in separate vault.
+- Extend dashboard with per-region auth error panels.
+
+# Architecture & Operational Guides
+Guideline: Use BPE tokenization for compact prompts in incident bots.
+Reason: Reduces tokens by 20-40% on common templates.
+Template:
+- Summary: <text>
+- Impact: <numbers + % + regions>
+- Timeline: <UTC timestamps>
+- Resolution: <fix steps>
+- Ask: draft external comms in <= 1200 tokens.
