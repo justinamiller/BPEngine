@@ -13,7 +13,7 @@ namespace BPEngine.Tokenizer
         /// </summary>
         public static (string Snippet, int TokensUsed) TrimToBudget(ITokenizer tokenizer, string text, int budget, string ellipsis = "…")
         {
-            if (budget <= 0 || string.IsNullOrEmpty(text))
+            if (budget <= 0 || text.IsNullOrEmpty())
                 return ("", 0);
 
             // Fast path: already fits

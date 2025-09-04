@@ -158,9 +158,9 @@ namespace BPEngine.Trainer
 
             // Ensure output dir exists
             var outDir = Path.GetDirectoryName(Path.GetFullPath(mergesOutPath));
-            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+            if (!outDir.IsNullOrEmpty()) Directory.CreateDirectory(outDir);
             outDir = Path.GetDirectoryName(Path.GetFullPath(vocabOutPath));
-            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+            if (!outDir.IsNullOrEmpty()) Directory.CreateDirectory(outDir);
 
             // Write to temp files first (atomic publish)
             var tmpMerges = mergesOutPath + ".tmp";
@@ -221,9 +221,9 @@ namespace BPEngine.Trainer
             var (merges, vocab) = Train(paths);
 
             var outDir = Path.GetDirectoryName(Path.GetFullPath(mergesOutPath));
-            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+            if (!outDir.IsNullOrEmpty()) Directory.CreateDirectory(outDir);
             outDir = Path.GetDirectoryName(Path.GetFullPath(vocabOutPath));
-            if (!string.IsNullOrEmpty(outDir)) Directory.CreateDirectory(outDir);
+            if (!outDir.IsNullOrEmpty()) Directory.CreateDirectory(outDir);
 
             var tmpMerges = mergesOutPath + ".tmp";
             var tmpVocab = vocabOutPath + ".tmp";

@@ -25,7 +25,7 @@ namespace BPEngine.Models
             var tok = new ByteLevelBPETokenizer(mergesPath, vocab, specials ?? new());
 
             var history = new List<int>();
-            if (!string.IsNullOrEmpty(prompt))
+            if (!prompt.IsNullOrEmpty())
                 history.AddRange(tok.Encode(prompt));
 
             var rng = new Random();
