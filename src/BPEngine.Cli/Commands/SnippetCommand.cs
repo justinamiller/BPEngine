@@ -14,7 +14,7 @@ namespace BPEngine.Cli.Commands
 
             Dictionary<string, int>? v = null;
             if (!string.IsNullOrWhiteSpace(vocab)) v = VocabJsonReader.Load(vocab);
-            var tok = new ByteLevelBPETokenizer(merges, v, new());
+            var tok = new ByteLevelBPETokenizer(merges, v, null, new());
 
             var (snippet, used) = TokenBudgetTools.TrimToBudget(tok, text, budget);
             Console.WriteLine(snippet);

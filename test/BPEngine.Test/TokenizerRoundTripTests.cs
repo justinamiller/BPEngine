@@ -6,7 +6,7 @@ public class TokenizerRoundTripTests
     [Fact]
     public void RoundTrip_Ascii_And_Emoji()
     {
-        var tok = new ByteLevelBPETokenizer("gpt2_merges.txt", VocabJsonReader.Load("vocab.json"), new());
+        var tok = new ByteLevelBPETokenizer("gpt2_merges.txt", VocabJsonReader.Load("vocab.json"), null,new());
         var texts = new[]
         {
             "Hello world",

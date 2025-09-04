@@ -7,7 +7,8 @@ namespace BPEngine.Cli.Commands
         public static int Run(string[] args)
         {
             var (flags, pos) = ArgParser.Parse(args);
-            string sub = pos.Length == 0 ? "help" : pos[0];
+          
+            string sub = pos.Count == 0 ? "help" : pos[0];
 
             if (sub == "build")
             {

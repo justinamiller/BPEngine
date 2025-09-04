@@ -26,7 +26,7 @@ namespace BPEngine.Cli.Commands
 
             var vocab = string.IsNullOrWhiteSpace(vocabPath) ? null : VocabJsonReader.Load(vocabPath);
             int vocabSize = vocab?.Count ?? 32000;
-            var tok = new ByteLevelBPETokenizer(merges, vocab, new());
+            var tok = new ByteLevelBPETokenizer(merges, vocab, null,new());
 
             // Load corpus, tokenize into one big stream
             var text = File.ReadAllText(corpusPath);
@@ -65,7 +65,7 @@ namespace BPEngine.Cli.Commands
 
             var vocab = string.IsNullOrWhiteSpace(vocabPath) ? null : VocabJsonReader.Load(vocabPath);
             int vocabSize = vocab?.Count ?? 32000;
-            var tok = new ByteLevelBPETokenizer(merges, vocab, new());
+            var tok = new ByteLevelBPETokenizer(merges, vocab, null, new());
 
             var model = new TinyTransformer(vocabSize, dim, heads, layers, maxSeq);
             HeadIo.LoadWout(model, woutPath);
