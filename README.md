@@ -1,261 +1,141 @@
 # BPEngine
 
-BPEngine is a **byte‑pair encoding (BPE)** tokenizer toolkit written in **C#**—in the style used by the GPT‑2/3 family.  
-The long‑term goal is to provide a **100% .NET** implementation that supports the **full lifecycle** of a language‑model
-text pipeline: **train → package → serve → integrate**, with no Python runtime required.
+BPEngine is a **pure C#** implementation of GPT-style **byte-pair encoding (BPE) tokenization** and a playground for lightweight generative models. It is designed to run **end-to-end in .NET**, CPU-only, with **no Python dependencies**.  
 
-> If you want to kick the tires right now, start with the `ByteLevelBPETokenizer` library and the demo merges/vocab
-> (compatible with GPT‑style byte‑level BPE).
+The long-term goal: a self-contained .NET solution for the **full lifecycle of text processing**:  
+**train → analyze → package → serve → integrate**.
 
 ---
 
-## Vision & Scope
+## Why BPEngine?
 
-**Why BPEngine?**  
-Most open implementations rely on Python for tokenization, training, or runtime glue. BPEngine aims to be a **first‑class, production‑grade C#** alternative for teams that standardize on .NET.
+Most open-source tokenizers and toy GPT demos rely on Python. BPEngine is for teams that standardize on .NET and want:
 
-**Target outcomes:**
-
-- **Tokenizer parity** with GPT‑2/3 byte‑level BPE (regex pre‑tokenizer, bytes↔unicode mapping, merges application).
-- **Zero Python dependency** across the whole lifecycle.
-- **Ergonomic APIs** for apps, services, and data pipelines.
-- **Deterministic, testable, and high‑performance** behavior suitable for enterprise workloads.
+- **Tokenizer parity** with GPT-2/3 byte-level BPE.  
+- **Zero Python** across training, runtime, and tooling.  
+- **Deterministic + testable** behavior for enterprise workloads.  
+- **Educational + practical** modeling tools that run on CPU.  
 
 ---
 
-## Architecture (Full Lifecycle in C#)
+## Features
+
+### Tokenization
+- GPT-style **byte-level BPE** (encode/decode).
+- **Regex pre-tokenizer** close to GPT-2.
+- **Stable vocab/merges** from `merges.txt` + `vocab.json`.
+- **Special tokens** (`<|bos|>`, `<|eos|>`, `<|pad|>`).
+- **Snippet budgeting**: trim long inputs to a token budget.
+- **Performance flags**: tokens/sec, JSON metrics.
+
+### Training
+- Train new vocab + merges from any corpus (`train`).
+- Seed corpus trick for domain tokens (SKUs, error codes, acronyms).
+- Corpus analysis (`analyze`) for token histograms, bigrams, distributions.
+
+### Lightweight Models
+- **N-Gram model**: simple baseline generator.  
+- **Tiny Transformer demo**: forward-only GPT-like playground.  
+- **Trainable Transformer Head**: update the output weights on your own corpus → real learning on CPU.  
+
+---
+
+## Architecture
 
 ```
-[ Data Corpus ] 
+[ corpus.txt ] 
       │
       ▼
 [ BPE Trainer ]  ──►  merges.txt + vocab.json   ─┐
                                                  │
-                                          [ Packaging ]
+                                          [ BPEngine.Tokenizer ]
                                                  │
-                                                 ▼
-                                       [ BPEngine.Tokenizer ]
-                                                 │
-                       ┌─────────────────────────┴─────────────────────────┐
-                       ▼                                                   ▼
-              [ Inference Runtime ]                                [ Tooling / CLI ]
-                       │                                                   │
-                       ▼                                                   ▼
-                 .NET apps / APIs                                   DevOps & CI/CD
+      ┌──────────────────────────┬──────────────────────────┐
+      ▼                          ▼                          ▼
+ [ Corpus Analyzer ]     [ Lightweight Models ]       [ CLI / Tooling ]
+                               │
+               ┌───────────────┼────────────────┐
+               ▼                                ▼
+      [ n-gram generator ]            [ Tiny Transformer + head training ]
 ```
-
-**Modules (planned):**
-- **`BPEngine.Tokenizer`** – Byte‑level BPE encode/decode (done first).
-- **`BPEngine.Trainer`** – Train BPE merges/vocab from a corpus (C# only).
-- **`BPEngine.Runtime`** – Utilities for serving tokenization at scale (pools, SIMD, caching).
-- **`BPEngine.Cli`** – Command‑line tools for encode/decode, train, and validate.
-- **`BPEngine.Tests`** – Unit/benchmark tests for determinism and performance.
 
 ---
 
-## Key Features
+## Solution Layout
 
-- **Byte‑Level BPE** compatible approach (GPT‑2/3 style):
-  - Regex pre‑tokenization close to GPT‑2.
-  - Bytes→Unicode trick to ensure lossless round‑trip.
-  - Merge‑rank application with caching for speed.
-- **Special tokens** support (e.g., `<|bos|>`, `<|eos|>`, `<|pad|>`).
-- **Pluggable vocab/merges** (`vocab.json`, `merges.txt`).
-- **Deterministic decode** with explicit ID→token maps.
-- **High‑performance C#** implementation; no Python interop.
+```
+BPEngine.sln
+├─ src
+│  ├─ BPEngine.Tokenizer      # core BPE encode/decode
+│  ├─ BPEngine.Trainer        # train merges + vocab
+│  ├─ BPEngine.Transformers   # tiny transformer + head trainer
+│  ├─ BPEngine.Cli            # CLI commands
+└─ tests
+   └─ BPEngine.Tests
+```
 
 ---
 
 ## Getting Started
 
-### 1) Install / Reference
-Add the Tokenizer project to your solution (or reference the DLL/NuGet once published).
-
-```
-dotnet add package BPEngine.Tokenizer   # (planned)
+### Build
+```bash
+dotnet build
 ```
 
-### 2) Files
-Use a GPT‑style **merges file** and (optionally) a **vocab.json**:
+### Encode / Decode
+```bash
+dotnet run --project ./src/BPEngine.Cli -- encode   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --text "Hello, world!"
 
-- `gpt2_merges.txt` (subset for testing): download from your project’s artifacts or the provided demo.
-- `vocab.json` (optional for fixed IDs). Without it, IDs can be assigned dynamically for local use.
-
-> Demo files:
-> - `/mnt/data/gpt2_merges_demo/gpt2_merges.txt`
-> - `/mnt/data/gpt2_merges_demo/vocab.json`
-
-### 3) Sample Code
-
-```csharp
-var mergesPath = "gpt2_merges.txt";
-
-// Optional fixed IDs for specials (recommended for consistency)
-var specials = new Dictionary<string, int>
-{
-    ["<|bos|>"] = 0,
-    ["<|eos|>"] = 1,
-    ["<|pad|>"] = 2
-};
-
-// Load vocab.json if you want stable IDs for all tokens
-Dictionary<string,int>? vocab = null;
-// vocab = LoadVocab("vocab.json"); // implement a simple JSON loader
-
-var tok = new ByteLevelBPETokenizer(mergesPath, tokenToId: vocab, specialTokenToId: specials);
-
-// Encode
-var ids = tok.Encode("<|bos|>Hello, world!<|eos|>");
-Console.WriteLine(string.Join(", ", ids));
-
-// Decode
-var text = tok.Decode(ids);
-Console.WriteLine(text);
+dotnet run --project ./src/BPEngine.Cli -- decode   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --ids 15496,995
 ```
 
----
-
-## Design Notes
-
-### Byte‑Level BPE
-- Tokenization happens **after** mapping UTF‑8 bytes into a stable unicode range to preserve all byte values.
-- Merges are applied using a **rank table** derived from `merges.txt` (lower rank = higher priority).
-- A small **LRU cache** (or dictionary cache) dramatically reduces repeated work on common substrings.
-
-### Regex Pre‑Tokenizer
-- GPT‑style regex segments text into:
-  - words (letters/numbers), contractions, punctuation, and whitespace blocks.
-- Small regex differences **change token boundaries**; we follow GPT‑2 conventions closely.
-
-### IDs & Vocab
-- With `vocab.json`, token strings map to **stable IDs** (required for model compatibility).
-- Without it, BPEngine can **assign IDs on the fly**—useful for local apps but not model interop.
-
----
-
-## Solution Layout (suggested)
-
-```
-BPEngine.sln
-├─ src
-│  ├─ BPEngine.Tokenizer
-│  │  ├─ ByteLevelBPETokenizer.cs
-│  │  └─ (helpers: Regex, Bytes↔Unicode, Cache)
-│  ├─ BPEngine.Trainer            # (planned)
-│  ├─ BPEngine.Runtime            # (planned)
-│  └─ BPEngine.Cli                # (planned)
-└─ tests
-   └─ BPEngine.Tests              # NB: determinism & round‑trip tests
+### Analyze
+```bash
+dotnet run --project ./src/BPEngine.Cli -- analyze   --corpus ./data/demo/corpus.txt   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --top 20 --bins 10 --perf
 ```
 
----
+### N-Gram Model
+```bash
+dotnet run --project ./src/BPEngine.Cli -- ngram train   --order 3 --corpus ./data/demo/corpus.txt   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --out ./artifacts/ngram.json
 
-## Roadmap
-
-- [x] Byte‑level BPE encode/decode library (MVP).
-- [ ] **Trainer**: learn merges/vocab from a corpus (C# only).
-- [ ] **Faster paths**: SIMD/intrinsics, pooling, and Span‑based parsing.
-- [ ] **CLI**: `bpe encode/ decode/ train/ validate` commands.
-- [ ] **ONNX/Interop tools** for exporting tokenizers.
-- [ ] **NuGet** release and documentation site.
-- [ ] **Benchmarks** against reference implementations (size and speed).
-
----
-
-## Performance & Testing
-
-- **Determinism tests**: identical input → identical IDs; decode(encode(x)) == x.
-- **Compatibility tests**: compare against known GPT‑2 token splits for a fixture set.
-- **Performance**: target low allocations and O(pairs) merging with caching.
-
----
-
-## File Formats
-
-- **`merges.txt`**: ordered list of space‑separated token pairs; earlier lines have **higher priority**.
-- **`vocab.json`**: JSON map of `token -> id`. For decode, keep a reverse map `id -> token`.
-
-Example `merges.txt` line:
-```
-t h
-th e
-in g
+dotnet run --project ./src/BPEngine.Cli -- ngram generate   --order 3 --model ./artifacts/ngram.json   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --prompt "Incident summary:" --max 60
 ```
 
-Example `vocab.json` entry:
-```json
-{ "the": 1234 }
+### Train Transformer Head
+```bash
+dotnet run --project ./src/BPEngine.Cli -- train-head   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --corpus ./data/demo/corpus.txt   --out ./artifacts/wout.bin   --steps 500 --batch 8 --seqlen 64
+
+dotnet run --project ./src/BPEngine.Cli -- gen-head   --merges ./data/demo/BIG_gpt2_merges.txt   --vocab  ./data/demo/BIG_vocab.json   --wout ./artifacts/wout.bin   --prompt "Draft an incident summary:" --max-new 100
 ```
-
----
-
-## Security & Safety
-
-- Tokenizers process untrusted input. Ensure:
-  - Bounded memory usage on large payloads.
-  - Timeouts or circuit breakers in service contexts.
-  - Validation on file loads (merges/vocab).
-
----
-
-## License & Attribution
-
-- BPEngine will include a permissive license (e.g., MIT) unless otherwise specified.
-- GPT‑style BPE concepts originate from Sennrich et al. (2016) and OpenAI’s GPT‑2 tokenizer design.
-
----
-
-## Contributing
-
-- Open to PRs for: training algorithms, SIMD optimizations, Windows/Linux CI, and interop helpers.
-- Please include **unit tests** and **benchmarks** for any behavior changes.
-
----
-
-## Contacts / Support
-
-- Issues and requests: GitHub Issues (planned).
 
 ---
 
 ## Working with `corpus.txt`
 
-The file [`./data/demo/corpus.txt`](./data/demo/corpus.txt) is the **training and demo dataset** for BPEngine.  
-It contains realistic enterprise IT text such as incident tickets, change requests, RCA notes, and operational guides.
+[`data/demo/corpus.txt`](./data/demo/corpus.txt) is the **training dataset**.  
+It contains realistic IT/enterprise text (incidents, changes, RCA notes).  
 
-### Why it matters
-- **Tokenizer training** (`train`): builds merges + vocab tuned to this text.
-- **Corpus analysis** (`analyze`): profiles token usage, length distributions, and frequent n-grams.
-- **N-gram baseline** (`ngram train/generate`): learns simple predictive models from this text.
-- **Head training** (`train-head` / `gen-head`): lets the tiny Transformer actually *learn* token transitions from your domain.
+- Add more examples to improve results.  
+- Retrain merges/vocab only when you add lots of new terminology.  
+- Otherwise just rerun `train-head` to improve learning.  
 
-### Improving results
-- **Add more examples** to `corpus.txt` to strengthen learning.  
-  - E.g. paste in more incident summaries, postmortems, runbooks, or architecture notes.  
-  - Then rerun `train-head` to improve the generated outputs.
-- **Keep the tokenizer fixed** if you want reproducibility.  
-- **Retrain the tokenizer** (`train`) if you expand into new domains with lots of new terminology (e.g. VINs, medical codes, financial tickers).  
-  - This produces new `merges.txt` + `vocab.json`.
+---
 
-### Rule of thumb
-- *Just more training examples?* → Update `corpus.txt` only.  
-- *New vocabulary domain?* → Retrain merges + vocab.  
-- *Demo reproducibility?* → Leave merges/vocab fixed and only expand `corpus.txt`.
+## Roadmap
 
-### Example
-```bash
-# Train head on updated corpus
-dotnet run --project ./src/BPEngine.Cli -- train-head \
-  --merges ./data/demo/BIG_gpt2_merges.txt \
-  --vocab  ./data/demo/BIG_vocab.json \
-  --corpus ./data/demo/corpus.txt \
-  --out ./artifacts/wout.bin \
-  --steps 800 --batch 16 --seqlen 64
+- [x] GPT-style tokenizer in pure C#.  
+- [x] CLI: encode/decode/train/analyze/snippet.  
+- [x] N-Gram baseline.  
+- [x] Tiny Transformer playground.  
+- [x] Trainable head for domain learning.  
+- [ ] SIMD + Span perf optimizations.  
+- [ ] NuGet packaging.  
+- [ ] Extended demo corpora.  
+- [ ] Docs site + tutorials.  
 
-# Generate with the trained head
-dotnet run --project ./src/BPEngine.Cli -- gen-head \
-  --merges ./data/demo/BIG_gpt2_merges.txt \
-  --vocab  ./data/demo/BIG_vocab.json \
-  --wout ./artifacts/wout.bin \
-  --prompt "Draft an incident summary:" \
-  --max-new 100
+---
+
+## License
+
+MIT (planned). GPT-style BPE originally described by Sennrich et al. (2016) and popularized by OpenAI GPT-2.
