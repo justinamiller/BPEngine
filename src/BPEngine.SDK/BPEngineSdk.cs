@@ -149,12 +149,16 @@ public sealed class BPEngineSdk : IAsyncDisposable
         // Flatten bigrams into the report if/when you add them to the DTO; for now return top tokens.
         return ValueTask.FromResult(new AnalyzeReport(
             TotalTokens: s.TotalTokens,
-            TopTokens: s.TopTokens
+            TopTokens: s.TopTokens,
+            TopBigrams:s.TopBigrams
         ));
     }
 
 
-    public ValueTask DisposeAsync() => ValueTask.CompletedTask;
+    public ValueTask DisposeAsync()
+    {
+     return   ValueTask.CompletedTask;
+    }
 
     public async Task BuildRagAsync(string corpusPath, string indexPath)
     {

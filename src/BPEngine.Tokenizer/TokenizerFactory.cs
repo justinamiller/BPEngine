@@ -38,7 +38,7 @@ namespace BPEngine.Tokenizer
         public static ITokenizer CreateGpt2(string mergesPath, Dictionary<string, int>? vocab, TokenizerOptions? opt = null)
         {
             opt ??= new();
-            return new ByteLevelBPETokenizer(mergesPath, vocab, opt);
+            return new ByteLevelBPETokenizer(mergesPath, vocab, specialTokenToId:null, opt);
         }
 
         /// <summary>
