@@ -49,3 +49,2404 @@ Template:
 - Timeline: <UTC timestamps>
 - Resolution: <fix steps>
 - Ask: draft external comms in <= 1200 tokens.
+
+# --- Synthetic Incident Data Expansion ---
+Incident: INC-2025-05000
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05001
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05002
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05003
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05004
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05005
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05006
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05007
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05008
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05009
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05010
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05011
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05012
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05013
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: apply hotfix patch.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05014
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05015
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: apply hotfix patch.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05016
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: apply hotfix patch.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05017
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05018
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05019
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05020
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05021
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05022
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05023
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: add backpressure and retry policy.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05024
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05025
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05026
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05027
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05028
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05029
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05030
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05031
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: purge stale cache entries.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05032
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05033
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05034
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05035
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05036
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05037
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05038
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rollback deployment.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05039
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05040
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05041
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05042
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05043
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05044
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05045
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05046
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05047
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05048
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05049
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05050
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05051
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05052
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05053
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05054
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05055
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05056
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05057
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05058
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05059
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05060
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05061
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05062
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05063
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05064
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05065
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05066
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05067
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05068
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05069
+Severity: P2
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05070
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05071
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05072
+Severity: P2
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05073
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05074
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05075
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05076
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05077
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rotate certificates.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05078
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05079
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05080
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05081
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05082
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05083
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: increase connection pool size.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05084
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05085
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05086
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05087
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: restart nodes in cluster.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05088
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rollback deployment.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05089
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05090
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05091
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: purge stale cache entries.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05092
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05093
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05094
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05095
+Severity: P2
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: purge stale cache entries.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05096
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05097
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05098
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05099
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05100
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05101
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: rotate certificates.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05102
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05103
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05104
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05105
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: add backpressure and retry policy.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05106
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05107
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05108
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05109
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: purge stale cache entries.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05110
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05111
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05112
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05113
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05114
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rotate certificates.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05115
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05116
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05117
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05118
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05119
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05120
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05121
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05122
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05123
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05124
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05125
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05126
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05127
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05128
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05129
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05130
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: increase connection pool size.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05131
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05132
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05133
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05134
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05135
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05136
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05137
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05138
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05139
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05140
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05141
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05142
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05143
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05144
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05145
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rollback deployment.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05146
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: add backpressure and retry policy.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05147
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05148
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05149
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05150
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05151
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05152
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05153
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: apply hotfix patch.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05154
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: purge stale cache entries.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05155
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05156
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05157
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05158
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rollback deployment.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05159
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05160
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05161
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05162
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05163
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05164
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05165
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05166
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05167
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05168
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05169
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05170
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05171
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05172
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05173
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05174
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05175
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05176
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05177
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05178
+Severity: P2
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05179
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05180
+Severity: P2
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05181
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05182
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05183
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05184
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05185
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05186
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05187
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05188
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05189
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05190
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: increase connection pool size.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05191
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rollback deployment.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05192
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05193
+Severity: P1
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05194
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rollback deployment.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05195
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05196
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05197
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05198
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05199
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05200
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05201
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05202
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: restart nodes in cluster.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05203
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: rotate certificates.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05204
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05205
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05206
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05207
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05208
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05209
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: apply hotfix patch.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05210
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05211
+Severity: P1
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05212
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05213
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05214
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05215
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05216
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05217
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05218
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05219
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05220
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05221
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05222
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: restart nodes in cluster.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05223
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05224
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05225
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05226
+Severity: P2
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05227
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05228
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05229
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05230
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05231
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: restart nodes in cluster.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05232
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05233
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05234
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05235
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05236
+Severity: P2
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05237
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05238
+Severity: P1
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05239
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05240
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05241
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rotate certificates.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05242
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05243
+Severity: P2
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05244
+Severity: P1
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05245
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05246
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05247
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05248
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: apply hotfix patch.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05249
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05250
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05251
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05252
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05253
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05254
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: rollback deployment.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05255
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05256
+Severity: P2
+Summary: payment gateway outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05257
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05258
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05259
+Severity: P1
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05260
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: add backpressure and retry policy.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05261
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05262
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05263
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05264
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05265
+Severity: P2
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05266
+Severity: P2
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05267
+Severity: P1
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05268
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05269
+Severity: P1
+Summary: checkout API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: apply hotfix patch.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05270
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: increase connection pool size.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05271
+Severity: P1
+Summary: auth service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05272
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05273
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05274
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05275
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: restart nodes in cluster.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05276
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05277
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05278
+Severity: P2
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: apply hotfix patch.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05279
+Severity: P1
+Summary: search API outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05280
+Severity: P1
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: increase connection pool size.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05281
+Severity: P2
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05282
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: add backpressure and retry policy.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05283
+Severity: P2
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: apply hotfix patch.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05284
+Severity: P2
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: add backpressure and retry policy.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05285
+Severity: P2
+Summary: checkout API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05286
+Severity: P1
+Summary: search API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05287
+Severity: P1
+Summary: auth service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05288
+Severity: P2
+Summary: user profile service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: purge stale cache entries.
+Next Steps: add canary deploy checks.
+
+Incident: INC-2025-05289
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: increase connection pool size.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05290
+Severity: P2
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: apply hotfix patch.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05291
+Severity: P1
+Summary: user profile service outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: rollback deployment.
+Next Steps: add synthetic monitoring tests.
+
+Incident: INC-2025-05292
+Severity: P1
+Summary: payment gateway outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: database connection saturation.
+Resolution: restart nodes in cluster.
+Next Steps: expand alert dashboards.
+
+Incident: INC-2025-05293
+Severity: P2
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: bad deploy caused cache key mismatch.
+Resolution: purge stale cache entries.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05294
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: unrolled feature flag.
+Resolution: add backpressure and retry policy.
+Next Steps: validate config in staging.
+
+Incident: INC-2025-05295
+Severity: P1
+Summary: search API outage in US region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: expired TLS certificate.
+Resolution: restart nodes in cluster.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05296
+Severity: P1
+Summary: user profile service outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: memory leak in worker pool.
+Resolution: rotate certificates.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05297
+Severity: P1
+Summary: checkout API outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: apply hotfix patch.
+Next Steps: improve autoscaling policy.
+
+Incident: INC-2025-05298
+Severity: P1
+Summary: auth service outage in EU region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: misconfigured load balancer.
+Resolution: rollback deployment.
+Next Steps: increase error budget margin.
+
+Incident: INC-2025-05299
+Severity: P2
+Summary: payment gateway outage in APAC region.
+Impact: Elevated errors observed across 30% of requests.
+Root Cause: capacity mis-estimation during peak load.
+Resolution: rotate certificates.
+Next Steps: add synthetic monitoring tests.
