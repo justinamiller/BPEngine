@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PackageId>BPEngine.SDK</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>YourNameOrOrg</Authors>
+    <Description>One-stop .NET SDK for GPT-style tokenization, RAG, and constrained generation.</Description>
+    <PackageTags>tokenizer;bpe;nlp;dotnet;rag;transformer;cl100k</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/yourorg/BPEngine</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BPEngine.RAG\BPEngine.RAG.csproj" />
+    <ProjectReference Include="..\BPEngine.Generation\BPEngine.Generation.csproj" />
+    <ProjectReference Include="..\BPEngine.Tokenizer\BPEngine.Tokenizer.csproj" />
+    <ProjectReference Include="..\BPEngine.Trainer\BPEngine.Trainer.csproj" />
+    <ProjectReference Include="..\BPEngine.Transformers\BPEngine.Transformers.csproj" />
+  </ItemGroup>
+
+</Project>
