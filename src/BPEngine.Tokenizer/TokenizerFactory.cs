@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BPEngine.Tokenizer
 {
-    internal static class TokenizerFactory
+    public static class TokenizerFactory
     {
         public static ByteLevelBPETokenizer CreateFromFiles(
            string mergesPath,

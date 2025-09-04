@@ -4,6 +4,7 @@ using BPEngine.Generation;
 using BPEngine.RAG;
 using BPEngine.Trainer;
 using BPEngine.Transformers;
+using BPEngine.Tokenizer.Core;
 
 namespace BPEngine.SDK;
 
@@ -94,25 +95,6 @@ public sealed class BPEngineSdk : IAsyncDisposable
         var list = hits.Select(h =>
             new RagHit(h.Doc, h.Score, (h.Doc >= 0 && h.Doc < docs.Length) ? docs[h.Doc] : string.Empty)).ToList();
         return new RagResult(list);
-    }
-
-    public async Task<GenerateResult> GenerateJsonAsync(string prompt, string schemaJson, bool useRag = true, int maxNew = 128)
-    {
-        // This is a placeholder: wire to your existing generator loop and call ConstrainedSampler.ApplyConstraint(...)
-        // Use _jsonConstraint to ensure outputs remain valid JSON by masking logits.
-        // For the façade, we return the prompt + RAG snippets to show the flow.
-        var sb = new StringBuilder();
-        if (useRag)
-        {
-            var rr = QueryRag(prompt, 3);
-            sb.AppendLine("/* context */");
-            foreach (var h in rr.Hits) sb.AppendLine(h.Snippet);
-        }
-        sb.AppendLine("/* schema */");
-        sb.AppendLine(schemaJson);
-        sb.AppendLine("/* draft */");
-        sb.AppendLine("{\"summary\":\"...\",\"nextSteps\":[\"...\",\"...\"]}");
-        return await Task.FromResult(new GenerateResult(Text: sb.ToString(), Json: null));
     }
 
     public async Task<TrainResult> TrainTokenizerAsync(string corpusPath, string outDir, int vocabSize = 32000, int minPair = 2)

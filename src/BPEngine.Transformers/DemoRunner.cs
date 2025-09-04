@@ -1,4 +1,5 @@
 ﻿using BPEngine.Tokenizer;
+using BPEngine.Tokenizer.Core;
 
 namespace BPEngine.Transformers
 {

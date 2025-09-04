@@ -2,7 +2,7 @@
 
 namespace BPEngine.RAG
 {
-    public sealed class TfIdfIndex
+    public sealed partial class TfIdfIndex
     {
         private readonly Dictionary<string, int> _vocab = new();
         private readonly List<Dictionary<int, double>> _docs = new(); // sparse tf

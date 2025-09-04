@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BPEngine.Tokenizer.Core
 {
-    internal class VocabJsonReader
+    public class VocabJsonReader
     {
         public static Dictionary<string, int> Load(string path)
         {
