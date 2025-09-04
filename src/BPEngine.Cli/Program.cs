@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BPEngine.Cli.Commands;
+using System;
 
 namespace BPEngine.Cli
 {
@@ -28,6 +29,7 @@ namespace BPEngine.Cli
                     "snippet" => Commands.SnippetCommand.Run(rest),
                     "train-head" => Commands.TransformerHeadCommands.TrainHead(rest),
                     "gen-head" => Commands.TransformerHeadCommands.GenerateWithHead(rest),
+                    "rag" => RagCommand.Run(rest),
                     _ => Unknown(cmd)
                 };
             }
@@ -75,6 +77,8 @@ namespace BPEngine.Cli
             Console.WriteLine("                (input: --corpus file.txt; output: wout.bin weight file)");
             Console.WriteLine("  gen-head      prompt + trained head → generated text (learned patterns)");
             Console.WriteLine("                (input: --prompt \"...\" --wout wout.bin; output: generated text)");
+            Console.WriteLine("  rag query     query + corpus → top-K matches");
+            Console.WriteLine("                (input: --q \"...\" --corpus file.txt; output: doc scores)");
             Console.WriteLine();
             Console.WriteLine("Global flags (accepted by most commands):");
             Console.WriteLine("  --perf          Print perf metrics (human-readable)");
@@ -92,10 +96,13 @@ namespace BPEngine.Cli
             Console.WriteLine("  bpe transformer demo --merges merges.txt --vocab vocab.json --prompt \"Hello\" --layers 2 --heads 2 --dim 64 --max-seq 64 --max-new 30");
             Console.WriteLine("  bpe train-head --merges merges.txt --vocab vocab.json --corpus data.txt --out ./artifacts/wout.bin");
             Console.WriteLine("  bpe gen-head   --merges merges.txt --vocab vocab.json --wout ./artifacts/wout.bin --prompt \"Test prompt\"");
+            Console.WriteLine("  bpe rag build  --corpus data.txt --out ./artifacts/tfidf.idx");
+            Console.WriteLine("  bpe rag query  --corpus data.txt --q \"login error\"");
             Console.WriteLine();
             Console.WriteLine("Details: use a command with --help for more options, e.g.:");
             Console.WriteLine("  bpe ngram --help");
             Console.WriteLine("  bpe transformer --help");
+            Console.WriteLine("  bpe rag --help");
             Console.WriteLine();
         }
 

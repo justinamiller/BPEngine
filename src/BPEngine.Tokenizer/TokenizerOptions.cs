@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace BPEngine.Tokenizer
 {
-    public sealed class TokenizerOptions
-    {
-        public int? MaxLength { get; init; }
-        public bool ThrowOnUnknownId { get; init; } = true;
-        public int CacheCapacity { get; init; } = 0;
-        public int MergeCacheCapacity { get; init; } = 50_000;
-        public int DecodeCacheCapacity { get; init; } = 50_000;
-    }
+    public enum RegexPreset { Gpt2, Cl100k }
+
+    /// <summary>
+    /// Cross-tokenizer options. Allowed/disallowed specials match modern chat stacks.
+    /// </summary>
+    public sealed record TokenizerOptions(
+        RegexPreset Regex = RegexPreset.Gpt2,
+        ISet<string>? AllowedSpecial = null,
+        ISet<string>? DisallowedSpecial = null,
+        bool UseByteFallback = true
+    );
 }

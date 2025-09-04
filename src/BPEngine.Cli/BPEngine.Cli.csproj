@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BPEngine.RAG\BPEngine.RAG.csproj" />
     <ProjectReference Include="..\BEEngine.Model\BPEngine.Model.csproj" />
+    <ProjectReference Include="..\BPEngine.Generation\BPEngine.Generation.csproj" />
     <ProjectReference Include="..\BPEngine.Tokenizer\BPEngine.Tokenizer.csproj" />
     <ProjectReference Include="..\BPEngine.Trainer\BPEngine.Trainer.csproj" />
     <ProjectReference Include="..\BPEngine.Transformers\BPEngine.Transformers.csproj" />

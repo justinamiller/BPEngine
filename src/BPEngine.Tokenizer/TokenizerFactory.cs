@@ -31,5 +31,24 @@ namespace BPEngine.Tokenizer
             var baseTok = new ByteLevelBPETokenizer(mergesPath, vocab, specials?.ToDictionary(x => x.token, x => x.id));
             return new Metrics.InstrumentedTokenizer(baseTok, metrics);
         }
+
+        /// <summary>
+        /// GPT-2 style: byte-level BPE from merges+vocab (your existing tokenizer).
+        /// </summary>
+        public static ITokenizer CreateGpt2(string mergesPath, Dictionary<string, int>? vocab, TokenizerOptions? opt = null)
+        {
+            opt ??= new();
+            return new ByteLevelBPETokenizer(mergesPath, vocab, opt);
+        }
+
+        /// <summary>
+        /// TikToken-style: mergeable ranks + optional specials.
+        /// </summary>
+        public static ITokenizer CreateCl100k(string ranksJsonPath, string? specialsJsonPath = null, TokenizerOptions? opt = null)
+        {
+            opt ??= new(RegexPreset.Cl100k);
+            var model = TikTokenModel.LoadFromJson(ranksJsonPath, specialsJsonPath);
+            return new TikTokenTokenizer(model, opt);
+        }
     }
 }
