@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.RAG", "BPEngine.RA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.SDK", "src\BPEngine.SDK\BPEngine.SDK.csproj", "{7556FBEB-E2DD-4E8D-B936-116560B86B11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Sandbox.Web", "src\BPEngine.Sandbox.Web\BPEngine.Sandbox.Web.csproj", "{99C7A171-0D82-429F-BDEC-B0D7ED021634}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{7556FBEB-E2DD-4E8D-B936-116560B86B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7556FBEB-E2DD-4E8D-B936-116560B86B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7556FBEB-E2DD-4E8D-B936-116560B86B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C7A171-0D82-429F-BDEC-B0D7ED021634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C7A171-0D82-429F-BDEC-B0D7ED021634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C7A171-0D82-429F-BDEC-B0D7ED021634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C7A171-0D82-429F-BDEC-B0D7ED021634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +126,7 @@ Global
 		{4C66BB3D-4B38-43F1-8C33-630411E8A79D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F5A85C66-CCF4-4CA1-9674-E3814D24FFA9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7556FBEB-E2DD-4E8D-B936-116560B86B11} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{99C7A171-0D82-429F-BDEC-B0D7ED021634} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FEA448E-D12D-4089-8EDD-8DEB296F2F68}

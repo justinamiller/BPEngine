@@ -1,0 +1,66 @@
+﻿@page
+@model Microsoft.AspNetCore.Mvc.RazorPages.PageModel
+@{
+    ViewData["Title"] = "BPEngine Sandbox";
+}
+<h1>BPEngine Sandbox</h1>
+<p>Try tokenization, RAG search, and JSON-constrained generation.</p>
+
+<section>
+    <h3>Encode</h3>
+    <textarea id="encText" rows="3" style="width:100%">Hello, world!</textarea><br />
+    <button onclick="encode()">Encode</button>
+    <pre id="encOut"></pre>
+</section>
+
+<section>
+    <h3>Decode</h3>
+    <input id="decIds" value="15496,995" style="width:100%" />
+    <button onclick="decodeIds()">Decode</button>
+    <pre id="decOut"></pre>
+</section>
+
+<section>
+    <h3>RAG Query</h3>
+    <input id="ragQ" value="authentication outage" style="width:100%" />
+    <button onclick="ragQuery()">Search</button>
+    <pre id="ragOut"></pre>
+</section>
+
+<section>
+    <h3>Generate JSON (constrained)</h3>
+    <textarea id="genPrompt" rows="3" style="width:100%">Summarize the latest incident and list next steps.</textarea>
+    <textarea id="genSchema" rows="6" style="width:100%">{"type":"object","properties":{"summary":{"type":"string"},"nextSteps":{"type":"array","items":{"type":"string"}}},"required":["summary","nextSteps"]}</textarea>
+    <button onclick="genJson()">Generate</button>
+    <pre id="genOut"></pre>
+</section>
+
+<script>
+    async function post(url, body) {
+      const r = await fetch(url + "?" + new URLSearchParams(body), { method: 'POST' });
+      if (!r.ok) throw new Error(await r.text());
+      return r.json();
+    }
+    async function encode() {
+      const out = await post('/api/encode', { text: document.getElementById('encText').value });
+      document.getElementById('encOut').textContent = JSON.stringify(out);
+    }
+    async function decodeIds() {
+      const ids = document.getElementById('decIds').value;
+      const out = await post('/api/decode', { ids: ids.split(',').map(s => parseInt(s.trim(), 10) || 0) });
+      document.getElementById('decOut').textContent = JSON.stringify(out, null, 2);
+    }
+    async function ragQuery() {
+      const out = await post('/api/rag/query', { q: document.getElementById('ragQ').value, k: 5 });
+      document.getElementById('ragOut').textContent = JSON.stringify(out, null, 2);
+    }
+    async function genJson() {
+      const out = await post('/api/generate/json', {
+        prompt: document.getElementById('genPrompt').value,
+        schemaJson: document.getElementById('genSchema').value,
+        useRag: true,
+        maxNew: 128
+      });
+      document.getElementById('genOut').textContent = JSON.stringify(out, null, 2);
+    }
+</script>
