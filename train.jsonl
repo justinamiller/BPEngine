@@ -1,0 +1,5 @@
+{"messages":[
+  {"role":"system","content":"You are a helpful assistant for IT incidents."},
+  {"role":"user","content":"VPN is down for remote users."},
+  {"role":"assistant","content":"Checking known issues... Is this limited to a region?"}
+]}

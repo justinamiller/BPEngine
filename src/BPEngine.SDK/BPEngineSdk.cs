@@ -8,7 +8,7 @@ using BPEngine.Tokenizer.Core;
 
 namespace BPEngine.SDK;
 
-public sealed class BPEngineSdk : IAsyncDisposable
+public sealed partial class BPEngineSdk : IAsyncDisposable
 {
     private readonly BpeSdkOptions _opt;
     private readonly ITokenizer _tok;

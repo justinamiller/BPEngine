@@ -30,6 +30,7 @@ namespace BPEngine.Cli
                     "train-head" => Commands.TransformerHeadCommands.TrainHead(rest),
                     "gen-head" => Commands.TransformerHeadCommands.GenerateWithHead(rest),
                     "rag" => RagCommand.Run(rest),
+                    "stfttrain"=> Commands.SftTrainCommand.Run(rest),
                     _ => Unknown(cmd)
                 };
             }

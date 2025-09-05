@@ -65,6 +65,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.SDK", "src\BPEngin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPEngine.Sandbox.Web", "src\BPEngine.Sandbox.Web\BPEngine.Sandbox.Web.csproj", "{99C7A171-0D82-429F-BDEC-B0D7ED021634}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dialogs", "dialogs", "{8E290F9E-7C9F-472E-BD9A-DEA72A01CBC2}"
+	ProjectSection(SolutionItems) = preProject
+		train.jsonl = train.jsonl
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +132,7 @@ Global
 		{F5A85C66-CCF4-4CA1-9674-E3814D24FFA9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7556FBEB-E2DD-4E8D-B936-116560B86B11} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{99C7A171-0D82-429F-BDEC-B0D7ED021634} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8E290F9E-7C9F-472E-BD9A-DEA72A01CBC2} = {58D294C7-DA00-4EC6-8514-5B83325DA2C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FEA448E-D12D-4089-8EDD-8DEB296F2F68}
